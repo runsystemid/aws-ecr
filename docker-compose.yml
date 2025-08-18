@@ -1,0 +1,9 @@
+---
+
+services:
+  aws-ecr:
+    build: .
+    env_file:
+      - .env
+    restart: always
+    platform: linux/amd64
