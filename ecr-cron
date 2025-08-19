@@ -1,1 +1,5 @@
-0 */8 * * * root . /app/.env && aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$ECR_ADDRESS"
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Run every minute as root; source environment exported by entrypoint
+1 */8 * * * root . /etc/environment; /usr/local/bin/ecr-login.sh
