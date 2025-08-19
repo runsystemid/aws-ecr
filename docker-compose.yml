@@ -7,3 +7,5 @@ services:
       - .env
     restart: always
     platform: linux/amd64
+    volumes:
+      - ./log:/app/logs
