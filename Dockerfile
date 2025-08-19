@@ -23,8 +23,13 @@ WORKDIR /app
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# Add ECR login wrapper for cron
+COPY ecr-login.sh /usr/local/bin/ecr-login.sh
+RUN chmod +x /usr/local/bin/ecr-login.sh
+
 # Add crontab file
 COPY ecr-cron /etc/cron.d/ecr-cron
+RUN chmod 0644 /etc/cron.d/ecr-cron
 
 # Set entrypoint script to run at container startup
 ENTRYPOINT ["/entrypoint.sh"]
